@@ -19,15 +19,14 @@ class MainActivity : AppCompatActivity() {
 
         ApiClient.getApiClient().getUsers().enqueue(object: retrofit2.Callback<List<User>> {
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                Log.e(TAG, t.message)
+                Log.e(TAG, t.message.toString())
             }
 
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 Log.d(TAG, response.body().toString())
                 val userListObj = UserList(response.body()!!)
 
-//                binding.userList = userListObj
-//                binding.executePendingBindings()
+                binding.userList = userListObj
             }
 
         })
